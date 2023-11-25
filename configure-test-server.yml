@@ -12,11 +12,11 @@
     command: sudo systemctl start docker
 
   - name: deploy insureme application
-    command: sudo docker run -itd -p 8081:8081 --name insure-me manoj9098/insure-me:1.0
+    command: sudo docker run -itd -p 8081:8081 --name insure-me devilvires/insure-me:1.0
 
-
-  
 - hosts: prodserver
+
+
   become: true
   tasks:
   - name: update apt
@@ -29,5 +29,5 @@
     command: sudo systemctl start docker
 
   - name: deploy insureme application
-    command: sudo docker run -itd -p 8081:8081 --name insure-me manoj9098/insure-me:1.0
+    command: sudo docker run -itd -p 8081:8081 --name insure-me devilvires/insure-me:1.0
 
