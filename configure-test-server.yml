@@ -1,4 +1,4 @@
----
+i---
 - hosts: webserver
   become: true
   tasks:
@@ -13,3 +13,21 @@
 
   - name: deploy insureme application
     command: sudo docker run -itd -p 8081:8081 --name insure-me manoj9098/insure-me:1.0
+
+
+  
+- hosts: prodserver
+  become: true
+  tasks:
+  - name: update apt
+    command: sudo apt-get update
+
+  - name: install docker
+    command: sudo apt install -y docker.io
+
+  - name: start docker service
+    command: sudo systemctl start docker
+
+  - name: deploy insureme application
+    command: sudo docker run -itd -p 8081:8081 --name insure-me manoj9098/insure-me:1.0
+
